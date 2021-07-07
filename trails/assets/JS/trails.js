@@ -1,11 +1,11 @@
 var mainElement = document.querySelector("#content")
-
+var render = 0
 
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
   } else {
-    alert('It seems like Geolocation is not enabled in your browser. Please use a browser which supports it.');
+    console.log("Geolocation is not supported by this browser.")
   }
 }
 getLocation()
@@ -17,7 +17,7 @@ function successFunction(position) {
 }
 
 function errorFunction(position) {
-	alert('Error!');
+ console.warn('error')
 }
 
 function Location(lat, lon) {
@@ -38,31 +38,51 @@ async function trailApi(event) {
       return response.json();
     })
     .then(response => {
-      console.log(response.places.length)
-      for (let i = 0; i < response.places.length; i++) {
-        if(response.places[i].description !== null) {
-          var div = document.createElement("div")
-          var title = document.createElement("h3")
-          var description = document.createElement("p")
-          title.textContent = response.places[i].name
-          description.textContent = response.places[i].description
-          mainElement.appendChild(div)
-          div.appendChild(title)
-          div.appendChild(description)
 
-        for (const [key, value] of Object.entries(response.places[i].activities)) {
-        var li = document.createElement("li")
-        li.textContent=response.places[i].activities[key].activity_type_name
-        div.appendChild(li)
-        console.log(response.places[i].activities[key].activity_type_name)
-        }
-          
-        }
-        }
+      for (let i = 0; i < response.places.length; i++) {
+        if(response.places[i].description !== null && render < 4) {
+              
+            console.log(render)
+            var div = document.createElement("div")
+            div.setAttribute(`class`,`card`) 
+            div.className += ' cell small-4 large-offset-1'
+            div.style.width = '33%'
+            var titleDiv = document.createElement("div")
+            titleDiv.setAttribute(`class`,`card-divider`)
+            div.appendChild(titleDiv)
+            var title = document.createElement("h3")
+            var description = document.createElement("p")
+            title.textContent = response.places[i].name
+            description.textContent = response.places[i].description
+            mainElement.appendChild(div)
+            titleDiv.appendChild(title)
+            var mapDiv = document.createElement("div")
+            mapDiv.setAttribute(`id`,`map${i}`)
+            mapDiv.setAttribute(`class`,`mapDiv`)
+            mapDiv.style.height = "300px"
+            mapDiv.style.width = '400px'
+            div.appendChild(mapDiv)
+            var desDiv = document.createElement("div")
+            desDiv.setAttribute(`class`,`card-section`)
+            div.appendChild(desDiv)
+            desDiv.appendChild(description)
+            
+            var map = L.map(`map${i}`).setView([response.places[i].lat, response.places[i].lon], 13);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            L.marker([response.places[i].lat, response.places[i].lon]).addTo(map)
+            render++
+          }
+        
+      }
       })
     .catch(err => {
       console.error(err);
     });
+
 
   }
   
