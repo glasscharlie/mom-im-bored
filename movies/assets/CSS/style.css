@@ -1,1 +1,10 @@
+body {
+    background-image: url(movie.jpeg) !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
 
+.cstm-nav {
+    background-color: transparent !important;
+    color: white !important;
+}

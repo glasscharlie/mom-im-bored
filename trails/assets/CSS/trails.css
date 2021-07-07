@@ -1,0 +1,33 @@
+body {
+    background-color: Black;
+}
+
+header {
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: 160%;
+    width: 50vw;
+    position: sticky;
+}
+
+.card {
+    border: 3px solid black;
+    text-align: center;
+}
+
+/* div.card-divider {
+    align-content: stretch;
+
+} */
+
+h3 {
+    text-align: center;
+    align-self: center;
+}
+
+
+.mapDiv {
+    margin: 0 auto;
+}
