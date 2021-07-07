@@ -9,7 +9,7 @@
     transition: 0.3s;
     border-radius: 5px; 
     text-align: center;
-    margin-top: 100px;
+    margin-top: 75px;
 }
 
 .card:hover {
@@ -17,7 +17,7 @@
 }
 
 .container {
-    padding: 200px 200px;
+    padding: 100px 100px;
  
 }
 
@@ -26,3 +26,9 @@ main {
     justify-content: space-around;
     
 }
+
+.background-color {
+    background-image: url("bored.jpeg.webp")
+}
+
+
