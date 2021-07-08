@@ -1,5 +1,10 @@
+
 body {
-    background-color: Black;
+    background-image: url("../images/hiking.jpg") !important;
+    background-color: #cccccc;
+    background-size: cover; 
+    height: 100vh;
+    width: 100vw;
 }
 
 header {
@@ -7,9 +12,12 @@ header {
     padding: 20px;
     text-align: center;
     color: white;
-    font-size: 160%;
     width: 50vw;
     position: sticky;
+}
+
+h1 {
+    font-size: 300%;
 }
 
 .card {
@@ -17,17 +25,28 @@ header {
     text-align: center;
 }
 
-/* div.card-divider {
-    align-content: stretch;
 
-} */
 
-h3 {
-    text-align: center;
-    align-self: center;
+div.card-section {
+    border-top: 3px solid black
 }
+
 
 
 .mapDiv {
     margin: 0 auto;
 }
+
+
+
+#content {
+    width: 100vw;
+}
+
+#homeButton {
+    position:absolute;
+    top:25px;
+    right: 50px;
+    font-size: larger;
+}
+
