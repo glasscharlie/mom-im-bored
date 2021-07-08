@@ -1,10 +1,47 @@
-body {
-    background-image: url(movie.jpeg) !important;
-    background-repeat: no-repeat !important;
-    background-size: cover !important;
-}
-
-.cstm-nav {
-    background-color: transparent !important;
-    color: white !important;
-}
+            body {
+                background-image: url(movie.jpeg) !important;
+                background-repeat: no-repeat !important;
+                background-size: cover !important;
+            }
+            
+            .cstm-nav {
+                background-color: transparent !important;
+                color: white !important;
+            }
+            
+            #topcard {
+                padding-left: 15%;
+                padding-right: 15%;
+            }
+            
+            .cstm-image {
+                padding: 20px;
+                max-height: 100%;
+                max-width: 80%;
+                margin: auto;
+            }
+            
+            .cstm-card {
+                background-color: rgba(0, 0, 0, .6) !important;
+                color: white;
+                border: black !important;
+                font-size: large;
+            }
+            
+            .cstm-title {
+                background-color: rgba(0, 0, 0, .6) !important;
+                color: white;
+                border: black !important;
+                text-align: center;
+                font-size: 300%;
+                text-decoration: underline;
+            }
+            
+            .cstm-btn {
+                margin: 3px !important;
+                padding: 10px !important;
+            }
+            
+            .menu {
+                background-color: transparent !important;
+            }
