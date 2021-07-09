@@ -1,13 +1,16 @@
+//global variables
 var mainElement = document.querySelector("#content")
 var cityName = document.querySelector("#city-input")
 var sumbitElement = document.querySelector("#submit-button")
 var locationArray = [];
 var trailLocations = []
 
+//function to get a random numer
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
+//api call to get lon/lat using the users inputed city
 function getLocation(event) {
   var citySearch = cityName.value
   
@@ -25,11 +28,13 @@ function getLocation(event) {
   });
 }
 
+//creates location object to store lat/lon
 function Location(lat, lon) {
   this.lat = lat;
   this.lon = lon;
 }
 
+//api call to get trail data based off lat/lon
 async function trailApi(event) {
     fetch(`https://trailapi-trailapi.p.rapidapi.com/?q-activities_activity_type_name_eq=hiking&lon=${locationArray[0].lon}&limit=25&lat=${locationArray[0].lat}`, {
       "method": "GET",
@@ -59,9 +64,11 @@ async function trailApi(event) {
     
   }
   
-  
+  //event listener for the submit button, starts the api call process
   sumbitElement.addEventListener("click", getLocation)
   
+
+  //function to render the information to the page. Creates an event listener for the find another park button
   function render() {
   console.log(trailLocations)
   mainElement.innerHTML = ''
