@@ -13,17 +13,15 @@ function getRandomInt(max) {
 //api call to get lon/lat using the users inputed city
 function getLocation(event) {
   var citySearch = cityName.value
-  
-  var apiKey = 'a6f4c7c6117b467306e0dda6808a0ae4'
-  var requestUrl = `http://api.positionstack.com/v1/forward?access_key=${apiKey}&query=${citySearch}`;
-  
+  var apiKey = '15a0cfa8b9ac3c7368330806d461355d'
+  var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&appid=${apiKey}&units=imperial`
   
   fetch(requestUrl)
   .then(function (response) {
       return response.json();
   })
   .then(function (data) {
-      locationArray.push(new Location(data.data[0].latitude,data.data[0].longitude))
+      locationArray.push(new Location(data.coord.lat,data.coord.lon))
       trailApi()
   });
 }
