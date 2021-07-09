@@ -328,8 +328,10 @@ getMovieBtn.addEventListener(`click`, function() {
         getMovie();
     }
 });
+
 getRandomMovieBtn.addEventListener(`click`, function() {
 
     getRandomMovie();
 
 });
+
