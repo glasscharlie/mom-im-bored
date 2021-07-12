@@ -270,7 +270,7 @@ function getRandomMovie() {
                 cardTitleBox.classList.add(`card-divider`, `cstm-card`);
                 movieImage.classList.add(`cstm-image`);
                 cardBoX.classList.add(`card-section`, `cstm-card`);
-                trailer.setAttribute(`href`, `https://www.youtube.com/results?search_query=${randomMovie}+Trailer`)
+                trailer.setAttribute(`href`, `https://www.youtube.com/results?search_query=${randomMovie  }+Trailer`)
                 trailer.setAttribute(`target`, `_blank`)
                     // Setting the information from the get to the above elements.
                 cardTitle.textContent = data.Title;

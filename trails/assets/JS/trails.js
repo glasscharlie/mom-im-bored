@@ -1,35 +1,38 @@
+//global variables
 var mainElement = document.querySelector("#content")
 var cityName = document.querySelector("#city-input")
 var sumbitElement = document.querySelector("#submit-button")
 var locationArray = [];
 var trailLocations = []
 
+//function to get a random numer
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
+//api call to get lon/lat using the users inputed city
 function getLocation(event) {
   var citySearch = cityName.value
-  
-  var apiKey = 'a6f4c7c6117b467306e0dda6808a0ae4'
-  var requestUrl = `http://api.positionstack.com/v1/forward?access_key=${apiKey}&query=${citySearch}`;
-  
+  var apiKey = '15a0cfa8b9ac3c7368330806d461355d'
+  var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&appid=${apiKey}&units=imperial`
   
   fetch(requestUrl)
   .then(function (response) {
       return response.json();
   })
   .then(function (data) {
-      locationArray.push(new Location(data.data[0].latitude,data.data[0].longitude))
+      locationArray.push(new Location(data.coord.lat,data.coord.lon))
       trailApi()
   });
 }
 
+//creates location object to store lat/lon
 function Location(lat, lon) {
   this.lat = lat;
   this.lon = lon;
 }
 
+//api call to get trail data based off lat/lon
 async function trailApi(event) {
     fetch(`https://trailapi-trailapi.p.rapidapi.com/?q-activities_activity_type_name_eq=hiking&lon=${locationArray[0].lon}&limit=25&lat=${locationArray[0].lat}`, {
       "method": "GET",
@@ -59,9 +62,11 @@ async function trailApi(event) {
     
   }
   
-  
+  //event listener for the submit button, starts the api call process
   sumbitElement.addEventListener("click", getLocation)
   
+
+  //function to render the information to the page. Creates an event listener for the find another park button
   function render() {
   console.log(trailLocations)
   mainElement.innerHTML = ''
